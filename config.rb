@@ -19,8 +19,8 @@ activate :header_menu_fix
 # from an outdated version the time for the tech_docs_gem to catch up
 sprockets.prepend_path File.join(__dir__, "./node_modules/govuk-frontend/")
 
-# Prevent pages from being indexed unless GitHub Actions is building the main branch
-config[:tech_docs][:prevent_indexing] = (ENV["GITHUB_REF"] != "refs/heads/main")
+# Prevent pages from being indexed unless Netlify is building the main branch
+config[:tech_docs][:prevent_indexing] = (ENV["CONTEXT"] != "production")
 
 helpers do
   include PackageContents
